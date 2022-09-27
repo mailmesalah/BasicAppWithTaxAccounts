@@ -1,0 +1,59 @@
+﻿<Window x:Class="WpfClientApp.Reports.Accounts.IncomeStatement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        x:Name="IncomeStatementWindow"
+        Title="Income Statement" Height="551" Width="801" FontFamily="Century Gothic" Background="#FF101040" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" Topmost="True" TextOptions.TextFormattingMode="Display" FontSize="14" Foreground="White" FontWeight="SemiBold" BorderBrush="White" BorderThickness="2" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0" HorizontalAlignment="Right">
+
+        <DatePicker x:Name="mDTPStartDate" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" Margin="-145,5,0,0" VerticalAlignment="Top" Width="134" IsTodayHighlighted="True" TabIndex="0" Background="#FF101040" Foreground="White" LostFocus="mDTPStartDate_LostFocus">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        
+        <DatePicker x:Name="mDTPEndDate" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" Margin="-146,35,0,0" VerticalAlignment="Top" Width="134" IsTodayHighlighted="True" TabIndex="0" Background="#FF101040" Foreground="White" LostFocus="mDTPEndDate_LostFocus">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+
+        <DataGrid Name="mDataGridBGroup" CanUserAddRows="False" HeadersVisibility="Column"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" SelectionUnit="FullRow" EnableColumnVirtualization="False" EnableRowVirtualization="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="-768,79,0,0" VerticalAlignment="Top" Width="757" Height="372" FontWeight="Normal" Foreground="White" Background="#FF101040" ColumnHeaderHeight="30"  HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="mDataGridBGroup_MouseDoubleClick">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" Binding="{Binding Ledger}" IsReadOnly="True" Width="200*"/>
+                <DataGridTextColumn Header="" Binding="{Binding Amount,StringFormat=N2}" IsReadOnly="True" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="" Binding="{Binding Total,StringFormat=N2}"  IsReadOnly="True" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="mButtonPrint" Content="Print" HorizontalAlignment="Left" Margin="-768,472,0,0" VerticalAlignment="Top" Width="114" Height="35"  TabIndex="1"/>
+        <Button Name="mButtonClose" Content="Close" HorizontalAlignment="Left" Margin="-126,472,0,0" VerticalAlignment="Top" Width="114" Height="35"  TabIndex="2" Click="mButtonClose_Click" />
+        
+    </Grid>
+</Window>

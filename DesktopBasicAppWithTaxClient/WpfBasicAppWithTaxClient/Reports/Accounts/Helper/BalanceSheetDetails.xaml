@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfClientApp.Reports.Accounts.Helper.BalanceSheetDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        x:Name="BalanceSheetDetailsWindow"
+        Title="Balance Sheet Details" Height="366" Width="698" FontFamily="Century Gothic" Background="#FF101040" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" Topmost="True" TextOptions.TextFormattingMode="Display" FontSize="14" Foreground="White" FontWeight="SemiBold" BorderBrush="White" BorderThickness="2" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0" HorizontalAlignment="Right">
+
+
+        <DataGrid Name="mDataGridGroup" CanUserAddRows="False" HeadersVisibility="Column"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" SelectionUnit="FullRow" EnableColumnVirtualization="False" EnableRowVirtualization="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="-676,18,0,0" VerticalAlignment="Top" Width="665" Height="255" FontWeight="Normal" Foreground="White" Background="#FF101040" ColumnHeaderHeight="30"  HorizontalScrollBarVisibility="Hidden" MouseDoubleClick="mDataGridGroup_MouseDoubleClick">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ledger" Binding="{Binding Ledger}" IsReadOnly="True" Width="200*"/>
+                <DataGridTextColumn Header="Debit" Binding="{Binding Debit,StringFormat=N2}" IsReadOnly="True" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Credit" Binding="{Binding Credit,StringFormat=N2}" IsReadOnly="True" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="LedgerCode" Binding="{Binding LedgerCode}"  IsReadOnly="True" Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="mButtonClose" Content="Close" HorizontalAlignment="Left" Margin="-125,291,0,0" VerticalAlignment="Top" Width="114" Height="35"  TabIndex="2" Click="mButtonClose_Click" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,137 @@
+﻿<Window x:Class="WpfClientApp.Reports.Accounts.LedgerReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        x:Name="LedgerReportWindow"
+        Title="Ledger Report" Height="598" Width="1004.875" FontFamily="Century Gothic" Background="#FF101040" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" Topmost="True" TextOptions.TextFormattingMode="Display" FontSize="14" Foreground="White" FontWeight="SemiBold" BorderBrush="White" BorderThickness="2" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0" HorizontalAlignment="Right">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="233*"/>
+            <RowDefinition Height="52*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="From" HorizontalAlignment="Left" Margin="-977,11,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="81" />
+        <DatePicker x:Name="mDTPStartDate" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" Margin="-891,13,0,0" VerticalAlignment="Top" Width="134" IsTodayHighlighted="True" TabIndex="0" Background="#FF101040" Foreground="White" SelectedDateChanged="mDTPStartDate_SelectedDateChanged">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+
+        <Label Content="To" HorizontalAlignment="Left" Margin="-977,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="81"/>
+        <DatePicker x:Name="mDTPEndDate" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" Margin="-891,43,0,0" VerticalAlignment="Top" Width="134" IsTodayHighlighted="True" TabIndex="0" Background="#FF101040" Foreground="White" SelectedDateChanged="mDTPEndDate_SelectedDateChanged">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+
+        <Label Content="Bill Type" HorizontalAlignment="Left" Margin="-977,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="81"/>
+        <ComboBox x:Name="mComboBillType" Style="{DynamicResource ComboBoxAccountsStyle}" Background="#FF101040" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Margin="-891,79,0,0" VerticalAlignment="Top" Width="134" Height="25" IsEditable="True" TabIndex="0" TextBoxBase.TextChanged="mComboBillType_SelectionChanged">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Blue"/>
+            </ComboBox.Resources>
+        </ComboBox>
+
+        <Label Content="Bill No" HorizontalAlignment="Left" Margin="-977,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="81"/>
+        <TextBox x:Name="mTextBoxBillNo" HorizontalAlignment="Left" Height="23" Margin="-891,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.5,0.522"  Background="#FF101040" Foreground="White" TabIndex="0" TextChanged="mTextBoxBillNo_TextChanged"/>
+
+        <Label Content="Ref Bill No" HorizontalAlignment="Left" Margin="-977,136,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="81"/>
+        <TextBox x:Name="mTextBoxRefBillNo" HorizontalAlignment="Left" Height="23" Margin="-891,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.5,0.522"  Background="#FF101040" Foreground="White" TabIndex="0" TextChanged="mTextBoxRefBillNo_TextChanged"/>
+
+        <Label Content="Group" HorizontalAlignment="Left" Margin="-725,11,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="67"/>
+        <ComboBox x:Name="mComboGroup" Style="{DynamicResource ComboBoxAccountsStyle}" Background="#FF101040" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Margin="-628,13,0,0" VerticalAlignment="Top" Width="191" Height="25" IsEditable="True" TabIndex="0" TextBoxBase.TextChanged="mComboGroup_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Blue"/>
+            </ComboBox.Resources>
+        </ComboBox>
+
+        <Label Content="Ledger" HorizontalAlignment="Left" Margin="-725,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="67"/>
+        <ComboBox x:Name="mComboLedger" Style="{DynamicResource ComboBoxAccountsStyle}" Background="#FF101040" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Margin="-628,43,0,0" VerticalAlignment="Top" Width="191" Height="25" IsEditable="True" TabIndex="0" RenderTransformOrigin="0.5,0.5" TextBoxBase.TextChanged="mComboLedger_SelectionChanged">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Blue"/>
+            </ComboBox.Resources>
+        </ComboBox>
+
+        <Label Content="Narration" HorizontalAlignment="Left" Margin="-725,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="92"/>
+        <TextBox x:Name="mTextBoxNarration" HorizontalAlignment="Left" Height="23" Margin="-628,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" RenderTransformOrigin="0.5,0.522"  Background="#FF101040" Foreground="White" TabIndex="0" TextChanged="mTextBoxNarration_TextChanged"/>
+
+        <Label Content="Financial Year" HorizontalAlignment="Left" Margin="-724,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.214,0.16" Foreground="White" Width="96"/>
+        <ComboBox x:Name="mComboFinancialYear" Style="{DynamicResource ComboBoxAccountsStyle}" Background="#FF101040" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Margin="-628,109,0,0" VerticalAlignment="Top" Width="191" Height="25" IsEditable="True" TabIndex="0" TextBoxBase.TextChanged="mComboFinancialYear_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.Resources>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="Blue"/>
+            </ComboBox.Resources>
+        </ComboBox>
+
+        <DataGrid Name="mDataGrid" ItemsSource="{Binding mGridContent}" CanUserAddRows="False" HeadersVisibility="Column"  CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" SelectionUnit="FullRow" EnableColumnVirtualization="False" EnableRowVirtualization="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="-973,192,0,0" VerticalAlignment="Top" Width="962" Height="289" FontWeight="Normal" Foreground="White" Background="#FF101040" ColumnHeaderHeight="30" HorizontalScrollBarVisibility="Auto" Grid.RowSpan="2" MouseDoubleClick="mDataGrid_MouseDoubleClick">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Background" Value="#FF101040"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Bill Date" Binding="{Binding BillDate}"  IsReadOnly="True" Width="100"/>
+                <DataGridTextColumn Header="Bill Type" Binding="{Binding BillType}" IsReadOnly="True" Width="100"/>
+                <DataGridTextColumn Header="Bill No" Binding="{Binding BillNo}"  IsReadOnly="True" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Sl No" Binding="{Binding SerialNo}"  IsReadOnly="True" Width="80">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Ledger" Binding="{Binding Ledger}" IsReadOnly="True" Width="200"/>
+                <DataGridTextColumn Header="Narration" Binding="{Binding Narration}" IsReadOnly="True" Width="150"/>
+                <DataGridTextColumn Header="Debit" Binding="{Binding Debit,StringFormat=N2}" IsReadOnly="True" Width="120">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Credit" Binding="{Binding Credit,StringFormat=N2}"  IsReadOnly="True" Width="120">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Financial Year" Binding="{Binding FinancialCode}" IsReadOnly="True" Width="80"/>
+                <DataGridTextColumn Header="Ref Bill No" Binding="{Binding RefBillNo}" IsReadOnly="True" Width="100"/>
+                <DataGridTextColumn Header="Ref Bill Date" Binding="{Binding RefBillDate}" IsReadOnly="True" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="mButtonClose" Content="Close" HorizontalAlignment="Left" Margin="-126,59,0,0" VerticalAlignment="Top" Width="114" Height="35"  TabIndex="2" Grid.Row="1" Click="mButtonClose_Click" />
+        <Button x:Name="mButtonPrint" Content="Print" HorizontalAlignment="Left" Margin="-973,59,0,0" VerticalAlignment="Top" Width="114" Height="35"  TabIndex="1" Grid.Row="1"/>
+
+    </Grid>
+</Window>
